@@ -13,7 +13,7 @@ function intercept (app) {
   const devConfig = loadConfig()
   app.get('/test-in-main', async (req, res) => {
     await setCookie(res)
-    return res.redirect('/web-admin-mdm-framework/')
+    return res.redirect(loadConfig().exchange.mianSystemUrl)
   })
   if (loadConfig().exchange.remoteUrl) {
     app.get(loadConfig().exchange.remoteUrl, async (req, res) => {
@@ -27,7 +27,7 @@ function intercept (app) {
 }
 function setProxy (options) {
   const devConfig = loadConfig()
-  options.devServer.proxy = Object.assign({}, devConfig.proxyConfig)
+  options.devServer.proxy = Object.assign(options.devServer.proxy || {}, devConfig.proxyConfig)
 }
 async function setCookie (res) {
   const devConfig = loadConfig()
