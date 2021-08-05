@@ -15,11 +15,15 @@ function intercept (app) {
     await setCookie(res)
     return res.redirect('/web-admin-mdm-framework/')
   })
-  app.get(loadConfig().exchange.remoteUrl, async (req, res) => {
-    const data = await axios.get(devConfig.exchange.localUrl)
-    res.setHeader('Content-Type', 'text/html')
-    return res.send(data.data)
-  })
+  if (loadConfig().exchange.remoteUrl) {
+    app.get(loadConfig().exchange.remoteUrl, async (req, res) => {
+      const data = await axios.get(devConfig.exchange.localUrl)
+      res.setHeader('Content-Type', 'text/html')
+      return res.send(data.data)
+    })
+  } else {
+    console.warn('\n需要在主框架测试，请提供exchange.remoteUrl')
+  }
 }
 function setProxy (options) {
   const devConfig = loadConfig()
