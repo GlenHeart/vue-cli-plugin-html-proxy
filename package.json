@@ -1,0 +1,24 @@
+{
+  "name": "vue-cli-plugin-proxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "@vue/cli-shared-utils": "^4.5.13",
+    "axios": "^0.21.1",
+    "inquirer": "^8.1.2"
+  },
+  "peerDependencies": {
+    "@vue/cli-shared-utils": "^4.5.13",
+    "axios": "^0.21.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
+}
